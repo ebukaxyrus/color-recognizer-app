@@ -9,7 +9,7 @@ st.title("🎨 AI Color Recognizer for Kids")
 st.write("Upload an image and click to get the closest color name!")
 
 # Upload image
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("wallhaven-jx632y.jpg", type=["jpg", "jpeg", "png"])
 
 # Color dataset
 colors = pd.DataFrame({
