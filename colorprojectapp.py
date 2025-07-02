@@ -44,9 +44,7 @@ st.write("Click on the image to find the name of the color!")
 # Load full color dataset
 
 # Load and clean CSV
-colors = pd.read_csv("color.csv")
-colors.columns = colors.columns.str.strip().str.lower()
-st.write(colors.columns.tolist())  # Debugging only (optional)
+colors = pd.read_csv("cleaned_color.csv")
 
 # Function to get closest color
 def get_color_name(R, G, B):
