@@ -117,23 +117,23 @@ if uploaded_file:
             cname = get_color_name(r, g, b)
 
             st.markdown(f"### 🎯 Color Name: {cname}")
-            st.markdown(f"**RGB:** ({r}, {g}, {b})")
-
 
             st.markdown(
-    		f"""
-    		<button onclick="speakColor()">🔊 Speak Color</button>
-
+                f"""
     		<script>
-    		function speakColor() {{
-        	var msg = new SpeechSynthesisUtterance("{cname}");
-        	window.speechSynthesis.cancel();
-        	window.speechSynthesis.speak(msg);
-    		}}
+    		const msg = new SpeechSynthesisUtterance("{cname}");
+    		msg.lang = "en-US";
+    		msg.pitch = 1.1;
+    		msg.rate = 1;
+    		window.speechSynthesis.cancel();
+    		window.speechSynthesis.speak(msg);
     		</script>
     		""",
     		unsafe_allow_html=True
 	    )
+
+
+            st.markdown(f"**RGB:** ({r}, {g}, {b})")
 
             st.markdown(
                 f"<div style='width:100px;height:50px;background-color:rgb({r},{g},{b});border:1px solid black;'></div>",
