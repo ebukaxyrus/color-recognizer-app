@@ -44,10 +44,9 @@ st.markdown(
      
 
     /* 🔥 Drag-and-drop text inside box */
-    .stFileUploader div[data-testid="stFileDropzone"] span {
+    .stFileUploader div[data-testid="stFileDropzone"] * {
         color: white !important;
-        font-size: 1rem;
-        font-weight: 600;
+        font-weight: bold;
     }
     
     .stFileUploader button {
