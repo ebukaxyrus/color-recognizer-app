@@ -105,8 +105,7 @@ if uploaded_file:
 
             # Speak button
             import streamlit.components.v1 as components
-
-	    components.html(
+            components.html(
                 f"""
     		<button onclick="speakColor()" style="padding:10px 20px; font-size:16px; border-radius:8px;">🔊 Speak Color</button>
     		<script>
