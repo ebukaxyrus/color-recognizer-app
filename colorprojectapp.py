@@ -43,23 +43,23 @@ st.write("Click on the image to find the name of the color!")
 # Color dataset
 # Load full color dataset
 
+# Load and clean CSV
 colors = pd.read_csv("color.csv")
-
-st.write(colors.columns.tolist())
-colors.columns = colors.columns.str.strip()
-
+colors.columns = colors.columns.str.strip().str.lower()
+st.write(colors.columns.tolist())  # Debugging only (optional)
 
 # Function to get closest color
 def get_color_name(R, G, B):
     min_diff = float('inf')
     cname = ""
     for i in range(len(colors)):
-        r_c, g_c, b_c = colors.loc[i, ["R", "G", "B"]]
+        r_c, g_c, b_c = colors.loc[i, ["r", "g", "b"]]
         d = ((R - r_c) ** 2 + (G - g_c) ** 2 + (B - b_c) ** 2) ** 0.5
         if d < min_diff:
             min_diff = d
             cname = colors.loc[i, "color_name"]
     return cname
+
 
 # Upload image
 uploaded_file = st.file_uploader("wallhaven-jx632y.jpg", type=["jpg", "jpeg", "png"])
