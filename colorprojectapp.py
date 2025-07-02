@@ -39,7 +39,7 @@ st.markdown(
 
 st.set_page_config(page_title="AI Color Recognizer", layout="centered")
 st.title("🎨 AI Color Recognizer for Kids")
-st.write("Click on the image to find the name of the color!")
+#st.write("Click on the image to find the name of the color!")
 
 # Color dataset
 # Load full color dataset
@@ -61,13 +61,13 @@ def get_color_name(R, G, B):
 
 
 # Upload image
-uploaded_file = st.file_uploader("wallhaven-jx632y.jpg", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("UPLOAD YOUR FILE", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
     img = Image.open(uploaded_file)
 
 # Resize image if it's too big
-    max_width = 600  # You can change this to 500, 400, etc.
+    max_width = 400  # You can change this to 500, 400, etc.
     if img.width > max_width:
         scale = max_width / img.width
         new_size = (int(img.width * scale), int(img.height * scale))
