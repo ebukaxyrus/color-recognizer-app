@@ -4,6 +4,24 @@ import pandas as pd
 import numpy as np
 from streamlit_image_coordinates import streamlit_image_coordinates
 
+
+import streamlit as st
+
+GA_MEASUREMENT_ID = "G-JRZNTB02YQ"  # replace with your Google Analytics GA4 Measurement ID
+
+ga_code = f"""
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{GA_MEASUREMENT_ID}');
+</script>
+"""
+
+st.components.v1.html(ga_code, height=0, width=0)
+
 # Page style
 st.markdown(
     """
