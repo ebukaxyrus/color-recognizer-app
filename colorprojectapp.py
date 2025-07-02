@@ -16,17 +16,18 @@ st.markdown(
         background-position: center;
     }
 
-    /* Force all text to black */
+    /* Force all text to black for visibility */
     h1, h2, h3, h4, h5, h6, p, div, label, span {
         color: black !important;
+        font-weight: bold;
     }
 
-    /* Apply white semi-transparent card background */
-    section.main > div.block-container {
+    /* Wrap main container in a readable card */
+    div[data-testid="stVerticalBlock"] {
         background-color: rgba(255, 255, 255, 0.85);
         padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
     </style>
     """,
