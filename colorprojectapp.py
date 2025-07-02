@@ -46,7 +46,7 @@ st.write("Click on the image to find the name of the color!")
 colors = pd.read_csv("color.csv")
 
 st.write(colors.columns.tolist())
-colors.columns = colors.columns.str.strip().str.lower()
+colors.columns = colors.columns.str.strip()
 
 
 # Function to get closest color
