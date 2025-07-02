@@ -4,6 +4,22 @@ import pandas as pd
 import numpy as np
 from streamlit_image_coordinates import streamlit_image_coordinates
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://i.gifer.com/13yx.gif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 st.set_page_config(page_title="AI Color Recognizer", layout="centered")
 st.title("🎨 AI Color Recognizer for Kids")
 st.write("Click on the image to find the name of the color!")
