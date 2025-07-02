@@ -50,11 +50,11 @@ def get_color_name(R, G, B):
     min_diff = float('inf')
     cname = ""
     for i in range(len(colors)):
-        r_c, g_c, b_c = colors.loc[i, ["r", "g", "b"]]
+        r_c, g_c, b_c = colors.loc[i, ["R", "G", "B"]]
         d = ((R - r_c) ** 2 + (G - g_c) ** 2 + (B - b_c) ** 2) ** 0.5
         if d < min_diff:
             min_diff = d
-            cname = colors.loc[i, "name"]
+            cname = colors.loc[i, "color_name"]
     return cname
 
 # Upload image
