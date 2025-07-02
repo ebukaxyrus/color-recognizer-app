@@ -119,19 +119,20 @@ if uploaded_file:
             st.markdown(f"### 🎯 Color Name: {cname}")
 
             st.markdown(
-                f"""
+    		f"""
     		<script>
-    		const msg = new SpeechSynthesisUtterance("{cname}");
-    		msg.lang = "en-US";
-    		msg.pitch = 1.1;
-    		msg.rate = 1;
-    		window.speechSynthesis.cancel();
-    		window.speechSynthesis.speak(msg);
+    		setTimeout(() => {{
+        	const msg = new SpeechSynthesisUtterance("{cname}");
+        	msg.lang = "en-US";
+        	msg.pitch = 1.1;
+        	msg.rate = 1;
+        	window.speechSynthesis.cancel();
+        	window.speechSynthesis.speak(msg);
+    		}}, 500);  // 500ms delay to ensure browser is ready
     		</script>
     		""",
     		unsafe_allow_html=True
-	    )
-
+	     )
 
             st.markdown(f"**RGB:** ({r}, {g}, {b})")
 
