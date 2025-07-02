@@ -14,6 +14,22 @@ st.markdown(
         background-attachment: fixed;
         background-position: center;
     }
+
+
+
+    /* Force all text to black */
+    h1, h2, h3, h4, h5, h6, p, div, label, span {
+        color: black !important;
+    }
+     
+
+    /* Optional: white card background for readability */
+    .main > div {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 1rem;
+        border-radius: 15px;
+    }
+
     </style>
     """,
     unsafe_allow_html=True
