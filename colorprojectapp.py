@@ -16,18 +16,36 @@ st.markdown(
         background-position: center;
     }
 
-    /* Force all text to black for visibility */
     h1, h2, h3, h4, h5, h6, p, div, label, span {
         color: black !important;
         font-weight: bold;
     }
 
-    /* Wrap main container in a readable card */
     div[data-testid="stVerticalBlock"] {
         background-color: rgba(255, 255, 255, 0.6);
         padding: 2rem;
         border-radius: 25px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 👇 File uploader styles */
+    .stFileUploader > label > div {
+        color: white !important;
+        font-weight: bold;
+    }
+
+    .stFileUploader div[data-testid="stFileDropzone"] {
+        background-color: rgba(0, 0, 0, 0.6);
+        border: 2px dashed #ffffff;
+        border-radius: 12px;
+        padding: 1rem;
+        color: white !important;
+    }
+
+    .stFileUploader button {
+        color: black !important;
+        background-color: white !important;
+        font-weight: bold;
     }
     </style>
     """,
