@@ -3,6 +3,7 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 from streamlit_image_coordinates import streamlit_image_coordinates
+from PIL import ImageOps
 
 st.markdown(
     """
@@ -64,8 +65,17 @@ uploaded_file = st.file_uploader("wallhaven-jx632y.jpg", type=["jpg", "jpeg", "p
 
 if uploaded_file:
     img = Image.open(uploaded_file)
-    img_array = np.array(img)
 
+# Resize image if it's too big
+    max_width = 600  # You can change this to 500, 400, etc.
+    if img.width > max_width:
+        scale = max_width / img.width
+        new_size = (int(img.width * scale), int(img.height * scale))
+        img = img.resize(new_size)
+
+    img_array = np.array(img)
+    
+   
     # Display clickable image
     st.markdown("### 👇 Click on the image below:")
     coords = streamlit_image_coordinates(img, key="click")
