@@ -118,23 +118,33 @@ if uploaded_file:
 
             st.markdown(f"### 🎯 Color Name: {cname}")
 
-            st.markdown(
+           
+            st.markdown(f"**RGB:** ({r}, {g}, {b})")
+            # Show detected color
+
+# Display the color box
+	    st.markdown(
+    		f"<div style='width:100px;height:50px;background-color:rgb({r},{g},{b});border:1px solid black;'></div>",
+    		unsafe_allow_html=True
+	    )
+
+# Add Speak Button
+	    st.markdown(
     		f"""
+    		<button onclick="speakColor()">🔊 Speak Color</button>
     		<script>
-    		setTimeout(() => {{
-        	const msg = new SpeechSynthesisUtterance("{cname}");
-        	msg.lang = "en-US";
-        	msg.pitch = 1.1;
-        	msg.rate = 1;
-        	window.speechSynthesis.cancel();
-        	window.speechSynthesis.speak(msg);
-    		}}, 500);  // 500ms delay to ensure browser is ready
+    		function speakColor() {{
+        	    const msg = new SpeechSynthesisUtterance("{cname}");
+        	    msg.lang = "en-US";
+        	    msg.pitch = 1.1;
+        	    msg.rate = 1;
+        	    window.speechSynthesis.cancel();
+        	    window.speechSynthesis.speak(msg);
+    		}}
     		</script>
     		""",
     		unsafe_allow_html=True
-	     )
-
-            st.markdown(f"**RGB:** ({r}, {g}, {b})")
+	    )
 
             st.markdown(
                 f"<div style='width:100px;height:50px;background-color:rgb({r},{g},{b});border:1px solid black;'></div>",
