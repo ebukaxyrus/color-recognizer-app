@@ -41,19 +41,17 @@ st.title("🎨 AI Color Recognizer for Kids")
 st.write("Click on the image to find the name of the color!")
 
 # Color dataset
-colors = pd.DataFrame({
-    'color_name': ['Red', 'Green', 'Blue', 'Yellow', 'Black', 'White', 'Gray', 'Orange', 'Purple'],
-    'R': [255, 0, 0, 255, 0, 255, 128, 255, 128],
-    'G': [0, 255, 0, 255, 0, 255, 128, 165, 0],
-    'B': [0, 0, 255, 0, 0, 255, 128, 0, 128]
-})
+# Load full color dataset
+
+colors = pd.read_csv("color.csv")
 
 # Function to get closest color
 def get_color_name(R, G, B):
     min_diff = float('inf')
     cname = ""
     for i in range(len(colors)):
-        d = abs(R - colors.loc[i, "R"]) + abs(G - colors.loc[i, "G"]) + abs(B - colors.loc[i, "B"])
+        r_c, g_c, b_c = colors.loc[i, ["R", "G", "B"]]
+        d = ((R - r_c) ** 2 + (G - g_c) ** 2 + (B - b_c) ** 2) ** 0.5
         if d < min_diff:
             min_diff = d
             cname = colors.loc[i, "color_name"]
