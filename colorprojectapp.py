@@ -117,6 +117,19 @@ if uploaded_file:
             cname = get_color_name(r, g, b)
 
             st.markdown(f"### 🎯 Color Name: {cname}")
+            
+            st.markdown(
+    		f"""
+    		<script>
+   		var msg = new SpeechSynthesisUtterance("{cname}");
+    		window.speechSynthesis.cancel();  // Stop previous speech
+    		window.speechSynthesis.speak(msg);
+    		</script>
+    		""",
+    		unsafe_allow_html=True
+	     )
+
+            
             st.markdown(f"**RGB:** ({r}, {g}, {b})")
             st.markdown(
                 f"<div style='width:100px;height:50px;background-color:rgb({r},{g},{b});border:1px solid black;'></div>",
