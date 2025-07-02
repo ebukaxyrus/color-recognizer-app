@@ -24,7 +24,7 @@ st.markdown(
 
     /* Wrap main container in a readable card */
     div[data-testid="stVerticalBlock"] {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.6);
         padding: 2rem;
         border-radius: 25px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
