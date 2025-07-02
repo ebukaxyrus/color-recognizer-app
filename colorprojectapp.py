@@ -54,7 +54,7 @@ def get_color_name(R, G, B):
         d = ((R - r_c) ** 2 + (G - g_c) ** 2 + (B - b_c) ** 2) ** 0.5
         if d < min_diff:
             min_diff = d
-            cname = colors.loc[i, "color_name"]
+            cname = colors.loc[i, "name"]
     return cname
 
 # Upload image
