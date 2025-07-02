@@ -121,7 +121,7 @@ if uploaded_file:
     		</script>
     		""",
     		height=100,
-	   )
+	    )
 
         else:
             st.warning("Click inside the image bounds.")
