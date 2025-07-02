@@ -41,7 +41,15 @@ st.markdown(
         padding: 1rem;
         color: white !important;
     }
+     
 
+    /* 🔥 Drag-and-drop text inside box */
+    .stFileUploader div[data-testid="stFileDropzone"] span {
+        color: white !important;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
     .stFileUploader button {
         color: black !important;
         background-color: white !important;
