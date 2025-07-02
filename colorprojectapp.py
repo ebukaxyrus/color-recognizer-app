@@ -16,25 +16,23 @@ st.markdown(
         background-position: center;
     }
 
-
-
     /* Force all text to black */
     h1, h2, h3, h4, h5, h6, p, div, label, span {
         color: black !important;
     }
-     
 
-    /* Optional: white card background for readability */
-    .main > div {
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 1rem;
-        border-radius: 15px;
+    /* Apply white semi-transparent card background */
+    section.main > div.block-container {
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
 st.set_page_config(page_title="AI Color Recognizer", layout="centered")
