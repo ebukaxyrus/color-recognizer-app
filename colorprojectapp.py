@@ -104,21 +104,24 @@ if uploaded_file:
             )
 
             # Speak button
-            st.markdown(
+            import streamlit.components.v1 as components
+
+	    components.html(
                 f"""
-                <button onclick="speakColor()">🔊 Speak Color</button>
-                <script>
-                function speakColor() {{
-                    const msg = new SpeechSynthesisUtterance("{cname}");
-                    msg.lang = "en-US";
+    		<button onclick="speakColor()" style="padding:10px 20px; font-size:16px; border-radius:8px;">🔊 Speak Color</button>
+    		<script>
+    		function speakColor() {{
+        	    const msg = new SpeechSynthesisUtterance("{cname}");
+        	    msg.lang = "en-US";
                     msg.pitch = 1.1;
                     msg.rate = 1;
                     window.speechSynthesis.cancel();
                     window.speechSynthesis.speak(msg);
-                }}
-                </script>
-                """,
-                unsafe_allow_html=True
-            )
+    		}}
+    		</script>
+    		""",
+    		height=100,
+	   )
+
         else:
             st.warning("Click inside the image bounds.")
