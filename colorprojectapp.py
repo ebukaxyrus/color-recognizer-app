@@ -15,7 +15,8 @@ st.components.v1.html(f"""
   window.dataLayer = window.dataLayer || [];
   function gtag(){{dataLayer.push(arguments);}}
   gtag('js', new Date());
-  gtag('config', '{GA_MEASUREMENT_ID}');
+  gtag('config', '{GA_MEASUREMENT_ID}')
+  gtag('event', 'page_view');  // <-- This line forces a page view event
 </script>
 """, height=0, width=0)
 
