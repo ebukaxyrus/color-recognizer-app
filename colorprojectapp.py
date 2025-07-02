@@ -3,8 +3,8 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 from streamlit_image_coordinates import streamlit_image_coordinates
-from PIL import ImageOps
 
+# Page style
 st.markdown(
     """
     <style>
@@ -15,25 +15,20 @@ st.markdown(
         background-attachment: fixed;
         background-position: center;
     }
-
     h1, h2, h3, h4, h5, h6, p, div, label, span {
         color: black !important;
         font-weight: bold;
     }
-
     div[data-testid="stVerticalBlock"] {
         background-color: rgba(255, 255, 255, 0.6);
         padding: 2rem;
         border-radius: 25px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-
-    /* 👇 File uploader styles */
     .stFileUploader > label > div {
         color: white !important;
         font-weight: bold;
     }
-
     .stFileUploader div[data-testid="stFileDropzone"] {
         background-color: rgba(0, 0, 0, 0.6);
         border: 2px dashed #ffffff;
@@ -41,14 +36,10 @@ st.markdown(
         padding: 1rem;
         color: white !important;
     }
-     
-
-    /* 🔥 Drag-and-drop text inside box */
     .stFileUploader div[data-testid="stFileDropzone"] * {
         color: white !important;
         font-weight: bold;
     }
-    
     .stFileUploader button {
         color: black !important;
         background-color: white !important;
@@ -59,19 +50,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-
+# Page settings
 st.set_page_config(page_title="AI Color Recognizer", layout="centered")
 st.title("🎨 AI Color Recognizer for Kids")
-#st.write("Click on the image to find the name of the color!")
 
-# Color dataset
-# Load full color dataset
-
-# Load and clean CSV
+# Load color dataset
 colors = pd.read_csv("cleaned_color.csv")
 
-# Function to get closest color
+# Color matching function
 def get_color_name(R, G, B):
     min_diff = float('inf')
     cname = ""
@@ -83,24 +69,19 @@ def get_color_name(R, G, B):
             cname = colors.loc[i, "color_name"]
     return cname
 
-
 # Upload image
 uploaded_file = st.file_uploader("UPLOAD YOUR FILE", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
     img = Image.open(uploaded_file)
-
-# Resize image if it's too big
-    max_width = 400  # You can change this to 500, 400, etc.
+    max_width = 400
     if img.width > max_width:
         scale = max_width / img.width
         new_size = (int(img.width * scale), int(img.height * scale))
         img = img.resize(new_size)
 
     img_array = np.array(img)
-    
-   
-    # Display clickable image
+
     st.markdown("### 👇 Click on the image below:")
     coords = streamlit_image_coordinates(img, key="click")
 
@@ -110,44 +91,33 @@ if uploaded_file:
 
         if y < img_array.shape[0] and x < img_array.shape[1]:
             pixel = img_array[y, x]
-            if len(pixel) == 4:
-                r, g, b, _ = pixel
-            else:
-                r, g, b = pixel
+            r, g, b = pixel[:3]
             cname = get_color_name(r, g, b)
 
             st.markdown(f"### 🎯 Color Name: {cname}")
-
-           
             st.markdown(f"**RGB:** ({r}, {g}, {b})")
-            # Show detected color
 
-# Display the color box
-	    st.markdown(
-    		f"<div style='width:100px;height:50px;background-color:rgb({r},{g},{b});border:1px solid black;'></div>",
-    		unsafe_allow_html=True
-	    )
-
-# Add Speak Button
-	    st.markdown(
-    		f"""
-    		<button onclick="speakColor()">🔊 Speak Color</button>
-    		<script>
-    		function speakColor() {{
-        	    const msg = new SpeechSynthesisUtterance("{cname}");
-        	    msg.lang = "en-US";
-        	    msg.pitch = 1.1;
-        	    msg.rate = 1;
-        	    window.speechSynthesis.cancel();
-        	    window.speechSynthesis.speak(msg);
-    		}}
-    		</script>
-    		""",
-    		unsafe_allow_html=True
-	    )
-
+            # Color display box
             st.markdown(
                 f"<div style='width:100px;height:50px;background-color:rgb({r},{g},{b});border:1px solid black;'></div>",
+                unsafe_allow_html=True
+            )
+
+            # Speak button
+            st.markdown(
+                f"""
+                <button onclick="speakColor()">🔊 Speak Color</button>
+                <script>
+                function speakColor() {{
+                    const msg = new SpeechSynthesisUtterance("{cname}");
+                    msg.lang = "en-US";
+                    msg.pitch = 1.1;
+                    msg.rate = 1;
+                    window.speechSynthesis.cancel();
+                    window.speechSynthesis.speak(msg);
+                }}
+                </script>
+                """,
                 unsafe_allow_html=True
             )
         else:
