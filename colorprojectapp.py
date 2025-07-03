@@ -3,17 +3,25 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 from streamlit_image_coordinates import streamlit_image_coordinates
+import streamlit.components.v1 as components
 
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRZNTB02YQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+# Google Analytics 4 Tag Injection
+components.html(
+    """
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRZNTB02YQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JRZNTB02YQ');
+    </script>
+    """,
+    height=0,
+    width=0
+)
 
-  gtag('config', 'G-JRZNTB02YQ');
-</script>
 
 # Page style
 st.markdown(
