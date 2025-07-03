@@ -5,20 +5,15 @@ import numpy as np
 from streamlit_image_coordinates import streamlit_image_coordinates
 
 
-GA_MEASUREMENT_ID = "G-JRZNTB02YQ"
-
-
-st.components.v1.html(f"""
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRZNTB02YQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', '{GA_MEASUREMENT_ID}')
-  gtag('event', 'page_view');  // <-- This line forces a page view event
+
+  gtag('config', 'G-JRZNTB02YQ');
 </script>
-""", height=0, width=0)
 
 # Page style
 st.markdown(
